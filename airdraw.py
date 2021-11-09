@@ -1,4 +1,3 @@
-
 import numpy as np
 import cv2
 from collections import deque
@@ -20,18 +19,10 @@ cv2.createTrackbar("Lower Saturation", "Color detectors", 72, 255,setValues)
 cv2.createTrackbar("Lower Value", "Color detectors", 49, 255,setValues)
 cv2.resizeWindow('Color detectors', 300, 30)
 
-
-
-
-
 '''  
     Deque initialization
     
  '''
-
-
-
-
 
 
 bpoints = [deque(maxlen=1024)]
@@ -81,15 +72,6 @@ while True:
 
 
 
-
-
-
-
-
-
-
-
-
     ''' TRackbars part2'''
     #getting HSV values both upper and lower from trackbar
     u_hue = cv2.getTrackbarPos("Upper Hue", "Color detectors")
@@ -117,10 +99,7 @@ while True:
     cv2.putText(frame, "GREEN", (298, 33), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA)
     cv2.putText(frame, "RED", (420, 33), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA)
     cv2.putText(frame, "YELLOW", (520, 33), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (150,150,150), 2, cv2.LINE_AA)
-
-
-    
-    
+   
     
     '''mask.py'''
     # Identifying the pointer by making its mask
@@ -130,16 +109,6 @@ while True:
     Mask = cv2.morphologyEx(Mask, cv2.MORPH_OPEN, kernel)
     Mask = cv2.dilate(Mask, kernel, iterations=1)
     #res = cv2.bitwise_and(frame,frame, mask= Mask)
-
-
-
-
-
-
-
-
-   
-
     
     
     '''contours.py'''
@@ -222,13 +191,11 @@ while True:
 
 
     
-
-   # Show all the windows
     cv2.imshow("Tracking", frame)
     cv2.imshow("Paint", paintWindow)
     cv2.imshow("mask",Mask)
     #cv2.imshow('res',res)
-    if cv2.waitKey(1)== ord('q'): # if q is pressed break
+    if cv2.waitKey(1)== ord('q'):
         break
 cap.release()
 cv2.destroyAllWindows()
